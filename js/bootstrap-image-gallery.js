@@ -78,7 +78,7 @@
             }
         },
         getUrl: function (element) {
-            return element.href || $(element).data('href');
+            return $(element).data('href') || element.href;
         },
         getDownloadUrl: function (element) {
             return $(element).data('download');
@@ -386,7 +386,7 @@
                 link = $(e.target).closest(options.selector);
                 if (link.length && modal.length) {
                     e.preventDefault();
-                    options.href = link.prop('href') || link.data('href');
+                    options.href = link.data('href') || link.prop('href');
                     options.delegate = link[0] !== this ? this : document;
                     if (data) {
                         $.extend(data.options, options);
